@@ -58,23 +58,31 @@ function displayCat() {
 
 // Function to display the cat-heart.mp4
 function displayCatHeart() {
-    // Clear existing content in the image container
-    document.getElementById('image-container').innerHTML = '';
-    // Get the container where the image will be displayed
-    var imageContainer = document.getElementById('image-container');
-    // Create a new Image element for the cat-heart
-    var catHeartImage = new Image();
-    // Set the source (file path) for the cat-heart image
-    catHeartImage.src = 'cat-heart.mp4'; // Assuming the cat-heart image is named "cat-heart.mp4"
-    // Set alternative text for the image (for accessibility)
-    catHeartImage.alt = 'Cat Heart';
-    // When the cat-heart image is fully loaded, add it to the image container
-    catHeartImage.onload = function() {
-        imageContainer.appendChild(catHeartImage);
-        // Hide the options container
-        document.getElementById('options').style.display = 'none';
-    };
-}
+    var container = document.getElementById('image-container');
+    container.innerHTML = '';
 
+    // Cat-heart video (with sound)
+    var catHeartVideo = document.createElement('video');
+    catHeartVideo.src = 'cat-heart.mp4';
+    catHeartVideo.controls = true;
+    catHeartVideo.playsInline = true;
+    catHeartVideo.volume = 1.0;
+
+    // Us video (with sound)
+    var usVideo = document.createElement('video');
+    usVideo.src = 'us.mp4';
+    usVideo.controls = true;
+    usVideo.playsInline = true;
+    usVideo.volume = 1.0;
+
+    container.appendChild(catHeartVideo);
+    container.appendChild(usVideo);
+
+    document.getElementById('options').style.display = 'none';
+
+    // Play videos AFTER user interaction
+    catHeartVideo.play();
+    usVideo.play();
+}
 // Display the cat.mp4 initially
 displayCat();
