@@ -39,19 +39,20 @@ function flashRainbowColors(callback) {
 }
 
 // Function to display the cat.mp4 initially
+// Function to display the cat.mp4 initially
 function displayCat() {
-    // Get the container where the image will be displayed
     var imageContainer = document.getElementById('image-container');
-    // Create a new Image element for the cat
-    var catImage = new Image();
-    // Set the source (file path) for the cat image
-    catImage.src = 'cat.mp4'; // Assuming the cat image is named "cat.mp4"
-    // Set alternative text for the image (for accessibility)
-    catImage.alt = 'Cat';
-    // When the cat image is fully loaded, add it to the image container
-    catImage.onload = function() {
-        imageContainer.appendChild(catImage);
-    };
+    imageContainer.innerHTML = '';
+
+    var catVideo = document.createElement('video');
+    catVideo.src = 'cat.mp4';
+    catVideo.autoplay = true;
+    catVideo.loop = true;
+    catVideo.muted = true;      // required for autoplay
+    catVideo.playsInline = true;
+    catVideo.width = 300;       // optional
+
+    imageContainer.appendChild(catVideo);
 }
 
 // Function to display the cat-heart.mp4
