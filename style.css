@@ -16,7 +16,15 @@ body {
 }
 
 #image-container {
-    /* This container will hold the images */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#image-container video {
+    width: 45%;
+    max-width: 400px;
+    height: auto;
 }
 
 #question {

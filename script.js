@@ -5,10 +5,8 @@ function selectOption(option) {
     // Check which option was clicked
     if (option === 'yes') {
         // Flash rainbow colors
-        flashRainbowColors(function() {
-            document.getElementById('question').style.display = 'none'; // Hide the question
-            displayCatHeart(); // Display the cat-heart.mp4
-        });
+      document.getElementById('question').style.display = 'none';
+        displayVideosSideBySide();
     } else if (option === 'no') {
         // Change text on the "No" button to "You sure?"
         document.getElementById('no-button').innerText = 'You sure?'; 
@@ -57,30 +55,28 @@ function displayCat() {
 }
 
 // Function to display the cat-heart.mp4
-function displayCatHeart() {
+function displayVideosSideBySide() {
     var container = document.getElementById('image-container');
     container.innerHTML = '';
 
-    // Cat-heart video (with sound)
+    // Cat-heart video
     var catHeartVideo = document.createElement('video');
     catHeartVideo.src = 'cat-heart.mp4';
     catHeartVideo.controls = true;
     catHeartVideo.playsInline = true;
-    catHeartVideo.volume = 1.0;
 
-    // Us video (with sound)
+    // Us video
     var usVideo = document.createElement('video');
     usVideo.src = 'us.mp4';
     usVideo.controls = true;
     usVideo.playsInline = true;
-    usVideo.volume = 1.0;
 
     container.appendChild(catHeartVideo);
     container.appendChild(usVideo);
 
     document.getElementById('options').style.display = 'none';
 
-    // Play videos AFTER user interaction
+    // Play with sound (after user click)
     catHeartVideo.play();
     usVideo.play();
 }
